@@ -5,8 +5,8 @@ class Move {
   }
 
   move({ x, y }) {
-    this._x = x
-    this._y = y
+    this._x = x || this._x
+    this._y = y || this._y
   }
 
   pos() {

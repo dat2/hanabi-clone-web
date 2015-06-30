@@ -1,64 +1,51 @@
 import Move from './move'
+import Hover from './hover'
 
-const IDLE = 0
-const HOVERING = 1
+const degToRad = (deg) => deg * Math.PI / 180
 
 class HoveringCard extends Move {
-  constructor({ x, y, w, h, colour='green' }) {
+  constructor({ x, y, w, h, n, colour }) {
     super({ x, y })
     this._w = w
     this._h = h
+    this._n = n
     this._col = colour
 
-    this._state = IDLE
+    this._animation = new Hover(this, 0.6, 5)
+    this._mpos = { x: -1, y: -1 }
   }
 
   draw(ctx) {
+    // trigger animation, which just modifies x/y
+    this._animation.update(this.intersects(this._mpos))
+
+    let { x, y } = this.pos()
     ctx.save()
 
-    // ctx.rotate(20 * (Math.PI / 180))
+    // draw the card
     ctx.fillStyle = this._col
-    ctx.fillRect(this._x, this._y, this._w, this._h)
+    ctx.fillRect(x, y, this._w, this._h)
+
+    // draw the font
+    ctx.fillStyle = 'black';
+    ctx.font = '30px Verdana';
+    ctx.fillText(this._n, x + this._w / 2 - 10, y + this._h / 2 + 15)
 
     ctx.restore()
   }
 
-  intersects({ x, y }) {
+  intersects({ x: mx, y: my }) {
+    let { x, y } = this.pos()
+
     return (
-      (x >= this._x && x <= this._x + this._w)
+      (mx >= x && mx <= x + this._w)
       &&
-      (y >= this._y && y <= this._y + this._h)
+      (my >= y && my <= y + this._h)
     )
   }
 
-  hover(pos) {
-    let oldState = this._state
-
-    this._state = this.intersects(pos) ? HOVERING : IDLE
-
-    // if switching to hovering, hover
-    if(oldState == IDLE && this._state == HOVERING) {
-      let top = this._y - 10
-
-      // go up
-      let interval = setInterval(() => {
-        this._y -= 1
-        if(this._y <= top)
-          clearInterval(interval)
-      }, 10);
-    }
-
-    // if switching back from hovering into idle, go down
-    if(oldState == HOVERING && this._state == IDLE) {
-      let bottom = this._y + 10
-
-      // go down
-      let interval = setInterval(() => {
-        this._y += 1
-        if(this._y >= bottom)
-          clearInterval(interval)
-      }, 10);
-    }
+  hover(p) {
+    this._mpos = p
   }
 }
 

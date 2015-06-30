@@ -5,20 +5,23 @@ import Move from './scripts/move'
 
 class App {
   constructor(selector = '.main-canvas') {
+    this._container = document.querySelector(selector + '-container')
     this._canvas = document.querySelector(selector)
     this._ctx = this._canvas.getContext('2d')
     this._mousePos = new Move({ x: 0, y: 0 })
 
     // add card
     this.cards = [
-      new HoveringCard({ x: 10, y: 100, w: 70, h: 100 }),
-      new HoveringCard({ x: 90, y: 100, w: 70, h: 100, colour: 'red' }),
-      new HoveringCard({ x: 170, y: 100, w: 70, h: 100, colour: 'blue' })
+      new HoveringCard({ x: 10, y: 10, w: 70, h: 100, n: 1, colour: 'green' }),
+      new HoveringCard({ x: 90, y: 10, w: 70, h: 100, n: 2, colour: 'red' }),
+      new HoveringCard({ x: 170, y: 10, w: 70, h: 100, n: 3, colour: 'blue' }),
+      new HoveringCard({ x: 250, y: 10, w: 70, h: 100, n: 4, colour: 'yellow' }),
+      new HoveringCard({ x: 330, y: 10, w: 70, h: 100, n: 5, colour: 'grey' })
     ]
   }
 
   attachListeners() {
-    this._canvas.addEventListener('mousemove', (e) => {
+    this._container.addEventListener('mousemove', (e) => {
       e.preventDefault();
 
       // calculate the new mouse position
