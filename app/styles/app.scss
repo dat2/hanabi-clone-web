@@ -1,0 +1,11 @@
+@mixin horizontally-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-canvas {
+  border: 1px solid red;
+
+  @include horizontally-centered
+}

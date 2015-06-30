@@ -1,0 +1,30 @@
+{
+  "name": "hanabi-clone-web",
+  "version": "0.0.1",
+  "description": "a clone of the game hanabi",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --progress",
+    "build": "webpack --progress"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io-client": "^1.3.5"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.4",
+    "babel-loader": "^5.1.4",
+    "css-loader": "^0.15.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.5.2",
+    "imports-loader": "^0.6.4",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.9.11"
+  }
+}
