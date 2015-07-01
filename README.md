@@ -17,6 +17,8 @@ You need nodejs to run this. Do the following steps once you have nodejs install
 5. `npm start`
 6.  visit `localhost:8080` in your browser to play
 
+There may be an issue on windows, due to `html-webpack-plugin`. In that case, you must add `bundle.css`, `bundle.js` to `app/index.html` manually, using `<link>` and `<script>` tags, and edit `webpack.config.js` to remove `inject: true` wherever you find it.
+
 # Building
 To build a static website available to deploy to a static file server, run `npm build` and in the build directory you will find
 
