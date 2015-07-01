@@ -19,6 +19,7 @@ You need nodejs to run this. Do the following steps once you have nodejs install
 
 # Building
 To build a static website available to deploy to a static file server, run `npm build` and in the build directory you will find
+
 1. index.html
 2. bundle.js
 3. bundle.css
