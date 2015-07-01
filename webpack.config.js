@@ -50,7 +50,6 @@ module.exports = {
   devServer: {
     contentBase: './app',
     inline: true,
-    colors: true,
-    port: 8081
+    colors: true
   }
 };
