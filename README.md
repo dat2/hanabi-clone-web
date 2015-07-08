@@ -7,6 +7,18 @@ Although the game will not be a direct clone, but rather inspired from this game
 
 This is a work in progress right now, it is not playable for a while.
 
+# How to play
+
+1. You can't see your own cards
+2. You play with a few other people, and you have to tell them some information about their cards
+  a. Such as, these 3 cards are red, 2's, or etc. You must tell them all cards that match this information
+3. The amount of information you can give is limited
+4. You must make piles of 1,2,3,4,5 like solitaire by playing your cards down on the table
+5. You can do 3 things each turn, play, discard a card, or give information
+6. You have 3 chances to make a mistake (if you play a number like 3, and there is only a 1 on the table that's bad)
+
+Think cooperative solitaire without seeing your own cards
+
 # Running
 You need nodejs to run this. Do the following steps once you have nodejs installed:
 
