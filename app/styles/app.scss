@@ -1,11 +1,101 @@
+/**
+ * Mixins
+ */
 @mixin horizontally-centered {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.main-canvas {
-  border: 1px solid red;
+@mixin exact-width($size) {
+  min-width: $size;
+  max-width: $size;
+}
 
-  @include horizontally-centered
+@mixin exact-height($size) {
+  min-height: $size;
+  max-height: $size;
+}
+
+@mixin flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin card {
+  border-radius: 10px;
+  text-align: center;
+}
+
+/**
+ * HTML elements
+ */
+header {
+  @include exact-height(5vh);
+}
+
+footer {
+  @include exact-height(5vh);
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+/**
+ * Classes
+ */
+.flex {
+  @include flex-container
+}
+
+.spaced {
+  justify-content: space-around;
+}
+
+.main {
+  @include exact-height(80vh);
+}
+
+.game {
+  align-self: stretch;
+
+  border: 1px red solid;
+  position: relative;
+  flex: 3;
+}
+
+.nav {
+  border: 1px blue solid;
+  position: relative;
+  flex: 1;
+}
+
+.stacks {
+  position: absolute;
+  top: 37.5%;
+  bottom: 45%;
+  left: 30%;
+  right: 30%;
+}
+
+.stack {
+  flex: auto;
+  text-align: center;
+}
+
+.card {
+  @include horizontally-centered;
+  @include card;
+
+  flex: 1;
+}
+
+.hover {
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 }

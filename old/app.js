@@ -1,7 +1,11 @@
+import 'babel-core/polyfill'
+
 import './styles/app.scss'
 
 import HoveringCard from './scripts/card'
 import Move from './scripts/move'
+
+import './scripts/game'
 
 class App {
   constructor(selector = '.main-canvas') {

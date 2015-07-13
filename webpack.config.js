@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './app/app.js'
+    app: './app/index.js'
   },
 
   output: {
@@ -15,7 +15,7 @@ module.exports = {
   module: {
     loaders: [
       // precompile es6
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel?cacheDirectory'] },
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel?cacheDirectory&stage=1'] },
 
       // require('.scss')
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!sass?sourceMap') },
