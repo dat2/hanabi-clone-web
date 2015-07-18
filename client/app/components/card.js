@@ -20,11 +20,14 @@ class Card extends React.Component {
   render() {
     const { card: { colour, colourKnown, number, numberKnown }, show, style } = this.props
 
-    console.log(this.props.card)
+    let knowSome = colourKnown != numberKnown
+    let knowColour = show || colourKnown
+
+    let finalColour = knowColour ? colour : (knowSome ? 'cyan' : 'grey')
 
     const cardStyle = Object.assign({
-      color: colourKnown || show ? colour : 'grey',
-      border: `1px solid ${show ? colour : 'grey'}`
+      color: finalColour,
+      border: `1px solid ${finalColour}`
     }, style)
     return (
       <div className='one wide card hover' style={cardStyle}>
