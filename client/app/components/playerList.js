@@ -4,7 +4,7 @@ import Player from './player'
 
 class PlayerList extends React.Component {
   render() {
-    let { players, place, discard } = this.props
+    let { players } = this.props
     return (
       <div>
         {
@@ -13,15 +13,16 @@ class PlayerList extends React.Component {
               key={pI}
               player={p}
               playerIndex={pI}
-              show={true}
-              place={(c) => place(pI, c)}
-              discard={(c) => discard(pI, c)}
               />
           ))
         }
       </div>
     )
   }
+}
+
+PlayerList.defaultProps = {
+  players: []
 }
 
 export default PlayerList

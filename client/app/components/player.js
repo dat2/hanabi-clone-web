@@ -2,10 +2,13 @@ import React from 'react'
 
 import Card from './card'
 
+import { connect } from 'redux/react'
+
+@connect( ({ gameStore: { myIndex } }) => ({ myIndex }) )
 class Player extends React.Component {
 
   render() {
-    let { player: { cards }, show, playerIndex, place, discard } = this.props
+    let { player: { cards }, show, playerIndex, myIndex } = this.props
 
     let mainStyle = {
       position: 'absolute',
@@ -38,18 +41,12 @@ class Player extends React.Component {
     return (
       <div style={mainStyle}>
         <p> Player {playerIndex+1}'s cards </p>
-        <div className="flex">
+        <div className="grid">
           {
             cards.map(
               (c, cI) => {
                 return (
-                  <Card
-                    key={cI}
-                    card={c}
-                    show={show}
-                    place={() => place(cI)}
-                    discard={() => discard(cI)}
-                    />
+                  <Card key={cI} card={c} show={playerIndex !== myIndex}/>
                 )
               }
             )
@@ -58,6 +55,11 @@ class Player extends React.Component {
       </div>
     )
   }
+}
+
+Player.defaultProps = {
+  player: { cards: [] },
+  playerIndex: 0
 }
 
 export default Player

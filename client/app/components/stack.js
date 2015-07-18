@@ -20,10 +20,15 @@ function makeStyle({ colour, index }) {
 class Stack extends React.Component {
 
   render() {
-    const { cards, colour, hover } = this.props
+    const { cards, colour, hover, showColour } = this.props
+
     return (
       <div className="stack">
-        { colour !== undefined ? <p style={{color: colour }}>{colour}</p> : <span></span> }
+        { showColour && colour !== undefined
+          ? <p style={{color: colour }}>{colour}</p>
+          : <span></span>
+        }
+
         {
           cards.map(({ colour, number }, index) => (
             <div key={index} style={{ position: 'relative' }}>
@@ -38,6 +43,13 @@ class Stack extends React.Component {
     )
   }
 
+}
+
+Stack.defaultProps = {
+  cards: [],
+  colour: 'red',
+  hover: false,
+  showColour: true
 }
 
 export default Stack

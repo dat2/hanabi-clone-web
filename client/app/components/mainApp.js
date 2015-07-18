@@ -1,20 +1,18 @@
 import React from 'react'
 
-import { createRedux } from 'redux'
+import redux from '../constants/redux'
 import { Provider } from 'redux/react'
-import * as stores from '../stores/index'
+
+import { bindActionCreators } from 'redux'
+import * as GameActions from '../actions/gameActions'
 
 import App from './app'
-
-const redux = createRedux(stores)
 
 class MainApp extends React.Component {
   render() {
     return (
       <Provider redux={redux}>
-        {() =>
-          <App />
-        }
+        { () => <App redux={redux}/> }
       </Provider>
     )
   }

@@ -9,7 +9,7 @@ class Discarded extends React.Component {
     return (
       <div>
         <p> Discard pile </p>
-        <Stack cards={discarded} hover/>
+        <Stack cards={discarded} hover showColour={false}/>
       </div>
     )
   }

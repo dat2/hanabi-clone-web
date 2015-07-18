@@ -4,11 +4,11 @@ import Stack from './stack'
 
 class StackList extends React.Component {
   render() {
-    let { stacks, score } = this.props
+    const { stacks, score } = this.props
     return (
       <div className="stacks">
         <p> Stacks, Score: {score}</p>
-        <div className="flex spaced">
+        <div className="grid spaced">
           {
             Object.keys(stacks).map((c, i) => <Stack key={i} cards={stacks[c]} colour={c}/>)
           }
@@ -16,6 +16,11 @@ class StackList extends React.Component {
       </div>
     )
   }
+}
+
+StackList.defaultProps = {
+  stacks: { },
+  score: 0
 }
 
 export default StackList

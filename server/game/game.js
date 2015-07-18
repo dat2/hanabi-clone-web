@@ -36,6 +36,13 @@ class Game {
     this.win = false
   }
 
+  getState() {
+    const st = this
+    st.deck = undefined
+
+    return st
+  }
+
   checkLost() {
     // either no chances
     const noChances = this.chances === 0

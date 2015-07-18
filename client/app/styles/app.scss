@@ -7,21 +7,6 @@
   margin-right: auto;
 }
 
-@mixin exact-width($size) {
-  min-width: $size;
-  max-width: $size;
-}
-
-@mixin exact-height($size) {
-  min-height: $size;
-  max-height: $size;
-}
-
-@mixin flex-container {
-  display: flex;
-  justify-content: space-between;
-}
-
 @mixin card {
   border-radius: 10px;
   text-align: center;
@@ -31,11 +16,11 @@
  * HTML elements
  */
 header {
-  @include exact-height(5vh);
+  min-height: 5vh;
 }
 
 footer {
-  @include exact-height(5vh);
+  min-height: 5vh;
 }
 
 body {
@@ -46,8 +31,27 @@ body {
 /**
  * Classes
  */
-.flex {
-  @include flex-container
+.grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  padding: 1rem;
+}
+
+.wide {
+  &.one {
+    flex: 1;
+  }
+
+  &.two {
+    flex: 2;
+  }
+
+  &.three {
+    flex: 3;
+  }
 }
 
 .spaced {
@@ -55,7 +59,7 @@ body {
 }
 
 .main {
-  @include exact-height(80vh);
+  min-height: 80vh;
 }
 
 .game {
@@ -63,13 +67,11 @@ body {
 
   border: 1px red solid;
   position: relative;
-  flex: 3;
 }
 
 .nav {
   border: 1px blue solid;
   position: relative;
-  flex: 1;
 }
 
 .stacks {
@@ -80,16 +82,13 @@ body {
   right: 30%;
 }
 
-.stack {
-  flex: auto;
+.centered {
   text-align: center;
 }
 
 .card {
   @include horizontally-centered;
   @include card;
-
-  flex: 1;
 }
 
 .hover {

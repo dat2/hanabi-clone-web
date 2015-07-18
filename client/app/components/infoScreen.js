@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'redux/react'
 
-
 import Discarded from './discarded'
+
 function select({ gameStore: { info, chances, discarded, lose, win } }) {
   return { info, chances, discarded, lose, win }
 }
@@ -17,7 +17,7 @@ class InfoScreen extends React.Component {
     const msg = lose ? 'You have lost!' : (win ? 'You have won!' : '')
 
     return (
-      <nav className="nav">
+      <nav className="nav column">
         <p style={msgStyle}> {msg}</p>
         <p> You have {info} information tokens left </p>
         <p> You have {chances} chances left </p>

@@ -3,8 +3,9 @@ import React from 'react'
 import StackList from './stackList'
 import PlayerList from './playerList'
 
-import { bindActionCreators } from 'redux'
 import { connect } from 'redux/react'
+
+import { bindActionCreators } from 'redux'
 import * as GameActions from '../actions/gameActions'
 
 function select({ gameStore: { stacks, score, players } }) {
@@ -15,11 +16,10 @@ function select({ gameStore: { stacks, score, players } }) {
 class GameScreen extends React.Component {
 
   render() {
-
     const { stacks, score, players, dispatch } = this.props
 
     return (
-      <div className="game">
+      <div className="game column three wide">
         <StackList stacks={stacks} score={score} />
         <PlayerList players={players} {...bindActionCreators(GameActions, dispatch)} />
       </div>
